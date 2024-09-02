@@ -1,8 +1,60 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using FinanceiroDashboard.Controllers
+@{
+    ViewData["Title"] = "Notas Fiscais";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@model IEnumerable<NotaFiscalViewModel>
+
+<div class="container">
+  <h3>Filtro</h3>
+  <form asp-action="index" method="get" class="filtro">
+    <div class="row mb-2">
+      <div class="col-md-2">
+        <label for="Status">Status da Nota</label>
+        <select name="Status" id="Status" class="form-control">
+          <option value="T">Todos</option>
+          <option value="E">Emitida</option>
+          <option value="CR">Cobrança Realizada</option>
+          <option value="PA">Pagamento em Atraso</option>
+          <option value="PR">Pagamento Realizado</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="MesFiltro">Mês</label>
+        <input type="month" name="MesFiltro" id="MesFiltro" class="form-control" value="" />
+      </div>
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-primary mt-4">Aplicar Filtro</button>
+      </div>
+    </div>
+  </form>
+
+  <h3>Notas Fiscais</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Número NF</th>
+        <th>Pagador</th>
+        <th>Data de Emissão</th>
+        <th>Data de Cobrança</th>
+        <th>Data de Pagamento</th>
+        <th>Valor</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var nota in Model)
+      {
+        <tr class="dados">
+          <td>@nota.NumeroNF</td>
+          <td>@nota.Pagador</td>
+          <td>@nota.DtEmissao.ToShortDateString()</td>
+          <td>@nota.DtCobranca?.ToShortDateString()</td>
+          <td>@nota.DtPgto?.ToShortDateString()</td>
+          <td>@nota.ValorNF.ToString("c")</td>
+          <td>@nota.Status</td>
+        </tr>
+      }
+    </tbody>
+  </table>
 </div>

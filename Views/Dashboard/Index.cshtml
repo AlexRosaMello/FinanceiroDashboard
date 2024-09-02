@@ -1,0 +1,172 @@
+﻿@using FinanceiroDashboard.Controllers
+@{
+    ViewData["Title"] = "Dashboard Financeiro";
+}
+
+<div class="container">
+  <h3>Filtro</h3>
+  <form asp-action="Index" method="get" class="filtro">
+    <div class="row mb-2">
+      <div class="col-md-2">
+        <label for="FiltroPeriodo">Filtrar por:</label>
+        <select name="FiltroPeriodo" id="FiltroPeriodo" class="form-control">
+          <option value="Mes">Mês</option>
+          <option value="Trimestre">Trimestre</option>
+         <option value="Ano">Ano</option>
+        </select>
+      </div>
+
+      <div class="col-md-2" id="monthFilter">
+        <label for="Periodo">Selecione o Mês</label>
+        <input type="month" name="Periodo" id="Periodo" class="form-control" />
+      </div>
+
+      <div class="col-md-2" id="quarterFilter">
+        <label for="Trimestre">Selecione o Trimestre</label>
+        <select name="Trimestre" id="Trimestre" class="form-control">
+          <option value="1">1º Trimestre (Jan - Mar)</option>
+          <option value="2">2º Trimestre (Abr - Jun)</option>
+          <option value="3">3º Trimestre (Jul - Set)</option>
+          <option value="4">4º Trimestre (Out - Dez)</option>
+        </select>
+      </div>
+
+      <div class="col-md-2" id="yearFilter">
+        <label for="Ano">Selecione o Ano</label>
+        <select name="Ano" id="Ano" class="form-control">
+           @for (int ano = DateTime.Now.Year; ano >= 2020; ano--)
+           {
+             <option value="@ano">@ano</option>
+           }
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-primary mt-4">Aplicar Filtro</button>
+      </div>
+    </div>
+  </form>
+
+  <h3>Indicadores</h3>
+  <div class="row text-center cards">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Total Emitidas</h5>
+          <p class="card-text">@Model.TotalEmitidas.ToString("c")</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Sem Cobranças</h5>
+          <p class="card-text">@Model.TotalSemCobranca.ToString("c")</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Vencidas</h5>
+          <p class="card-text">@Model.TotalVencidas.ToString("c")</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">A Vencer</h5>
+          <p class="card-text">@Model.TotalAVencer.ToString("c")</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Pagas</h5>
+          <p class="card-text">@Model.TotalPagas.ToString("c")</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Gráficos</h3>
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <canvas id="graficoInadimplencia" width="800" height="200"></canvas>
+    </div>
+    <div class="col-md-12">
+      <canvas id="graficoReceita" width="800" height="200"></canvas>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <script>
+   $(document).ready(function() {
+     $('#FiltroPeriodo').change(function () {
+       var selectedValue = $(this).val();
+
+       // Mostra ou esconde os campos conforme a seleção
+       $('#monthFilter').toggle(selectedValue == "Mes");
+       $('#quarterFilter').toggle(selectedValue == "Trimestre");
+       $('#yearFilter').toggle(selectedValue == "Trimestre" || selectedValue == "Ano");
+     }).change();
+   });
+
+    // Configuração do gráfico de inadimplência
+    var ctxInadimplencia = document.getElementById('graficoInadimplencia').getContext('2d');
+    var inadimplencia = new Chart(ctxInadimplencia, {
+      type: 'line',
+      data: {
+        labels: @Html.Raw(Json.Serialize(Model.MesesInadimplencia)),
+        datasets: [{
+          label: 'Inadimplencia',
+          data: @Html.Raw(Json.Serialize(Model.ValoresInadimplencia)),
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1,
+          fill: false
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            beginAtZero: true
+          },
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Configuração do gráfico de receita
+    var ctxReceita = document.getElementById('graficoReceita').getContext('2d');
+    var receita = new Chart(ctxReceita, {
+      type: 'line',
+      data: {
+        labels: @Html.Raw(Json.Serialize(Model.MesesReceita)),
+        datasets: [{
+          label: 'Receita Recebida',
+          data: @Html.Raw(Json.Serialize(Model.ValoresReceita)),
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1,
+          fill: false
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            beginAtZero: true
+          },
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+}
