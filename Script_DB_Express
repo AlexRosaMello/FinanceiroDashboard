@@ -1,0 +1,354 @@
+CREATE TABLE [dbo].[NotaFiscal] (
+    [numero_nf]           NVARCHAR (50) NOT NULL,
+    [pagador]             NVARCHAR (55) NOT NULL,
+    [dt_emissao]          DATE          NOT NULL,
+    [dt_cobranca]         DATE          NULL,
+    [dt_pgto]             DATE          NULL,
+    [valor_nf]            MONEY         NOT NULL,
+    [doc_nf]              XML           NOT NULL,
+    [doc_boleto_bancario] XML           NOT NULL,
+    PRIMARY KEY CLUSTERED ([numero_nf] ASC)
+);
+
+INSERT INTO NotaFiscal (
+  numero_nf,
+	pagador,
+	dt_emissao,
+	dt_cobranca,
+	dt_pgto,
+	valor_nf,
+	doc_nf,
+	doc_boleto_bancario
+) VALUES (
+	'0001',
+	'Stroman, Witting and Hyatt',
+	'03/01/2023',
+	'18/02/2023',
+	'13/03/2023',
+	12.54,
+'
+<dataset>
+<record>
+<id>1</id>
+<nome_pagador>Stroman, Witting and Hyatt</nome_pagador>
+<id_nota>1</id_nota>
+<dt_emissao_nota>03/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>18/02/2023</dt_cobranca_nota>
+<dt_pgto_nota>13/03/2023</dt_pgto_nota>
+<valor_nota>12.54</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>PR</status_nota>
+</record>
+</dataset>',
+'
+<dataset>
+<record>
+<id>1</id>
+<nome_pagador>Stroman, Witting and Hyatt</nome_pagador>
+<id_nota>1</id_nota>
+<dt_emissao_nota>03/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>18/02/2023</dt_cobranca_nota>
+<dt_pgto_nota>13/03/2023</dt_pgto_nota>
+<valor_nota>12.54</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>PR</status_nota>
+</record>
+</dataset>
+'
+);
+
+INSERT INTO NotaFiscal (
+  numero_nf,
+	pagador,
+	dt_emissao,
+	dt_cobranca,
+	dt_pgto,
+	valor_nf,
+	doc_nf,
+	doc_boleto_bancario
+) VALUES (
+	'0002',
+	'Christiansen LLC',
+	'15/09/2023',
+	'30/09/2023',
+	null,
+	78.28,
+'
+<dataset>
+<record>
+<id>2</id>
+<nome_pagador>Christiansen LLC</nome_pagador>
+<id_nota>2</id_nota>
+<dt_emissao_nota>07/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>27/02/2023</dt_cobranca_nota>
+<dt_pgto_nota></dt_pgto_nota>
+<valor_nota>78.28</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>E</status_nota>
+</record>
+</dataset>',
+'
+<dataset>
+<record>
+<id>2</id>
+<nome_pagador>Christiansen LLC</nome_pagador>
+<id_nota>2</id_nota>
+<dt_emissao_nota>07/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>27/02/2023</dt_cobranca_nota>
+<dt_pgto_nota></dt_pgto_nota>
+<valor_nota>78.28</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>E</status_nota>
+</record>
+</dataset>
+'
+);
+
+INSERT INTO NotaFiscal (
+  numero_nf,
+	pagador,
+	dt_emissao,
+	dt_cobranca,
+	dt_pgto,
+	valor_nf,
+	doc_nf,
+	doc_boleto_bancario
+) VALUES (
+	'0003',
+	'Schmitt Group',
+	'03/01/2023',
+	'15/02/2023',
+	'04/03/2023',
+	58.64,
+'
+<dataset>
+<record>
+<id>3</id>
+<nome_pagador>Schmitt Group</nome_pagador>
+<id_nota>3</id_nota>
+<dt_emissao_nota>30/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>07/02/2023</dt_cobranca_nota>
+<dt_pgto_nota>04/03/2023</dt_pgto_nota>
+<valor_nota>58.64</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>E</status_nota>
+</record>
+</dataset>',
+'
+<dataset>
+<record>
+<id>3</id>
+<nome_pagador>Schmitt Group</nome_pagador>
+<id_nota>3</id_nota>
+<dt_emissao_nota>30/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>07/02/2023</dt_cobranca_nota>
+<dt_pgto_nota>04/03/2023</dt_pgto_nota>
+<valor_nota>58.64</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>E</status_nota>
+</record>
+</dataset>
+'
+);
+
+INSERT INTO NotaFiscal (
+  numero_nf,
+	pagador,
+	dt_emissao,
+	dt_cobranca,
+	dt_pgto,
+	valor_nf,
+	doc_nf,
+	doc_boleto_bancario
+) VALUES (
+	'0004',
+	'Hauck, Volkman and Russel',
+	'06/01/2023',
+	'12/02/2023',
+	'04/05/2023',
+	97.21,
+'
+<dataset>
+<record>
+<id>4</id>
+<nome_pagador>Hauck, Volkman and Russel</nome_pagador>
+<id_nota>4</id_nota>
+<dt_emissao_nota>06/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>12/02/2023</dt_cobranca_nota>
+<dt_pgto_nota>30/03/2023</dt_pgto_nota>
+<valor_nota>97.21</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>E</status_nota>
+</record>
+</dataset>',
+'
+<dataset>
+<record>
+<id>4</id>
+<nome_pagador>Hauck, Volkman and Russel</nome_pagador>
+<id_nota>4</id_nota>
+<dt_emissao_nota>06/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>12/02/2023</dt_cobranca_nota>
+<dt_pgto_nota>30/03/2023</dt_pgto_nota>
+<valor_nota>97.21</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>E</status_nota>
+</record>
+</dataset>
+'
+);
+
+INSERT INTO NotaFiscal (
+  numero_nf,
+	pagador,
+	dt_emissao,
+	dt_cobranca,
+	dt_pgto,
+	valor_nf,
+	doc_nf,
+	doc_boleto_bancario
+) VALUES (
+	'0005',
+	'Shields LLC',
+	'29/01/2023',
+	null,
+	null,
+	97.79,
+'
+<dataset>
+<record>
+<id>5</id>
+<nome_pagador>Shields LLC</nome_pagador>
+<id_nota>5</id_nota>
+<dt_emissao_nota>29/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>02/02/2023</dt_cobranca_nota>
+<dt_pgto_nota>19/03/2023</dt_pgto_nota>
+<valor_nota>97.79</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>D</status_nota>
+</record>
+</dataset>',
+'
+<dataset>
+<record>
+<id>5</id>
+<nome_pagador>Shields LLC</nome_pagador>
+<id_nota>5</id_nota>
+<dt_emissao_nota>29/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>02/02/2023</dt_cobranca_nota>
+<dt_pgto_nota>19/03/2023</dt_pgto_nota>
+<valor_nota>97.79</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>D</status_nota>
+</record>
+</dataset>
+'
+);
+
+INSERT INTO NotaFiscal (
+  numero_nf,
+	pagador,
+	dt_emissao,
+	dt_cobranca,
+	dt_pgto,
+	valor_nf,
+	doc_nf,
+	doc_boleto_bancario
+) VALUES (
+	'0006',
+	'Emmerich-Hodkiewicz',
+	'20/01/2023',
+	'08/02/2023',
+	'04/03/2023',
+	97.79,
+'
+<dataset>
+<record>
+<id>6</id>
+<nome_pagador>Emmerich-Hodkiewicz</nome_pagador>
+<id_nota>6</id_nota>
+<dt_emissao_nota>20/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>08/02/2023</dt_cobranca_nota>
+<dt_pgto_nota>04/03/2023</dt_pgto_nota>
+<valor_nota>51.27</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>C</status_nota>
+</record>
+</dataset>',
+'
+<dataset>
+<record>
+<id>6</id>
+<nome_pagador>Emmerich-Hodkiewicz</nome_pagador>
+<id_nota>6</id_nota>
+<dt_emissao_nota>20/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>08/02/2023</dt_cobranca_nota>
+<dt_pgto_nota>04/03/2023</dt_pgto_nota>
+<valor_nota>51.27</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>C</status_nota>
+</record>
+</dataset>
+'
+);
+
+INSERT INTO NotaFiscal (
+  numero_nf,
+	pagador,
+	dt_emissao,
+	dt_cobranca,
+	dt_pgto,
+	valor_nf,
+	doc_nf,
+	doc_boleto_bancario
+) VALUES (
+	'0007',
+	'Rippin-Satterfield',
+	'13/01/2023',
+	'21/04/2023',
+	'21/04/2023',
+	9.14,
+'
+<dataset>
+<record>
+<id>7</id>
+<nome_pagador>Rippin-Satterfield</nome_pagador>
+<id_nota>7</id_nota>
+<dt_emissao_nota>13/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>21/02/2023</dt_cobranca_nota>
+<dt_pgto_nota>16/03/2023</dt_pgto_nota>
+<valor_nota>9.14</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>E</status_nota>
+</record>
+</dataset>',
+'
+<dataset>
+<record>
+<id>7</id>
+<nome_pagador>Rippin-Satterfield</nome_pagador>
+<id_nota>7</id_nota>
+<dt_emissao_nota>13/01/2023</dt_emissao_nota>
+<dt_cobranca_nota>21/02/2023</dt_cobranca_nota>
+<dt_pgto_nota>16/03/2023</dt_pgto_nota>
+<valor_nota>9.14</valor_nota>
+<doc_xml/>
+<doc_boleto/>
+<status_nota>E</status_nota>
+</record>
+</dataset>
+'
+);
