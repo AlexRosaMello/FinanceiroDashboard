@@ -1,0 +1,124 @@
+﻿html {
+	font-size: 14px;
+	position: relative;
+	min-height: 100%;
+}
+
+@media (min-width: 768px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+body {
+	display: flex;
+	margin: 0;
+	background-color: #f1f2f7;
+}
+
+.sidebar {
+	width: 250px;
+	min-height: 100vh;
+	padding: 20px 0;
+	background-color: #1e1e2d;
+}
+
+.sidebar h1 {
+	display: block;
+	border-bottom: 1px dotted #1a1a27;
+	font-size: 18px;
+	color: #fff;
+	text-align: center;
+	padding-bottom: 18px;
+}
+
+.sidebar h5 {
+	font-size: 16px;
+	color: #808080;
+	font-weight: 300;
+	padding: 6px 16px;
+}
+
+.sidebar .nav-link {
+	color: #f1f2f7;
+	&:hover
+
+	{
+		background-color: #1a1a27;
+	}
+
+	&.active {
+		font-weight: bold;
+		color: white;
+		background-color: #007bff;
+	}
+}
+
+.content {
+	flex-grow: 1;
+	padding: 0;
+}
+
+main.container {
+	margin-top: 50px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	border: 1px solid #e7ecf1;
+	background-color: #ffffff;
+}
+
+.btn:focus, 
+.btn:active:focus, 
+.btn-link.nav-link:focus, 
+.form-control:focus, 
+.form-check-input:focus {
+	box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.navbar-brand {
+	margin-left: 20px;
+}
+
+h3 {
+	margin: 30px 0 5px 0;
+	padding: 10px 5px;
+	font-size: 16px;
+	color: #767676;
+	border-bottom: 1px dotted #ddd;
+}
+
+form.filtro {
+	padding: 10px 30px;
+	background: #f5f8fd;
+	border-left: 3px solid #258cfb;
+}
+
+.cards {
+	margin-top: 20px;
+}
+
+#graficoInadimplencia, 
+#graficoReceita {
+	margin-left: 20px;
+}
+
+.table {
+	margin-top: 20px;
+}
+
+.table tr.dados:hover {
+	background-color: #e7ecf1;
+}
+
+.perfil {
+	display: block;
+	width: 45px;
+	height: 45px;
+	font-size: 16px;
+	color: #fff !important;
+	border-radius: 5px;
+	background-color: darkblue;
+	padding: 9px;
+	display: block;
+	text-align: center;
+}

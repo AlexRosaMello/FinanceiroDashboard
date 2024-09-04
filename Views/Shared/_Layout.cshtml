@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"] - Financeiro Dashboard</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
   </head>
   <body>
     <nav class="sidebar">
-      <h1>TechNation - Fullstack</h1>
+      <h1>UneCont - Dev Fullstack</h1>
+      <h5>Menu</h5>
       <ul class="nav flex-column">
         <li class="nav-item">
           <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Dashboard" ? "active" : "")" href="/dashboard">Dashboard</a>
