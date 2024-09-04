@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      ACCEPT_EULA: 'Y'
+      SA_PASSWORD: 'SuaSenhaForte!'
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+  webapp:
+    build:
+      context: .  # Caminho para o Dockerfile
+    container_name: webapp
+    ports:
+      - "8080:80"
+    depends_on:
+      - sqlserver
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=MyDatabase;User Id=sa;Password=SuaSenhaForte!;
+    volumes:
+      - ./src/MyApp:/app
+    working_dir: /app
+    command: ["dotnet", "MyApp.dll"]
+
+volumes:
+  sqlserver-data:
